@@ -1,0 +1,31 @@
+{
+  "name": "arithmetic-expr-calculator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/natcobbinah/arithmetic-expr-calculator.git"
+  },
+  "keywords": [
+    "arithmetic calculator",
+    "reverse polish notation",
+    "arithmetic expressions"
+  ],
+  "author": "Nathaniel Cobbinah",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.9.0",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.6.2",
+    "typescript": "^5.2.2"
+  }
+}
