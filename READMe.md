@@ -16,19 +16,32 @@ Supports **PEDMAS** order of computation, thus, all the operators of
 
 ### Operations
 > Getting the **Postfix** Reverse Polish Notation
-    ```
-     ClassName.toPostfix_RPN(mathExpr)
 
-     To output to Console then, would be:
+    ```
+
+    import Expression from "./arithmetic-expr-calculator";
+
+    let expr = new Expression()
+
+    expr.convert_to_PostfixRPN(mathExpr)
+
+    To output to Console then, would be:
      
-     console.log(ClassName.toPostfix_RPN(mathExpr))
+    console.log(expr.convert_to_PostfixRPN(mathExpr))
+
     ```
 
 > Getting **evaluated Infix arithmetic expression**
+
     ```
-    let postfix_expr = ClassName.toPostfix_RPN(mathExpr1); 
+
+    import Expression from "./arithmetic-expr-calculator";
+
+    let expr = new Expression()
+
+    let postfix_expr = expr.convert_to_PostfixRPN(mathExpr1); 
     
-    let evaluatedResult = ClassName.evalPostfix_RPN(postfix_expr); 
+    let evaluatedResult = expr.eval_Expression(postfix_expr); 
     
     console.log(evaluatedResult)
 
@@ -36,52 +49,58 @@ Supports **PEDMAS** order of computation, thus, all the operators of
     On one-line approach, from concepts of higher order fxns, without a 
     need for the **postfix** representation of the expression
 
-    console.log(ClassName.evalPostfix_RPN(
-        ClassName.toPostfix_RPN(mathExpr)
+    console.log(expr.eval_Expression(
+        expr.convert_to_PostfixRPN(mathExpr)
     ))
+
     ```
 
 ### Sample Examples
+
     ```
+
+    import Expression from "./arithmetic-expr-calculator";
+    let expr = new Expression()
+
     //test1
     let mathExpr1 = "( 1 + 2 ) * 3";
-    let postfix_expr = Infix_toPostfix.toPostfix_RPN(mathExpr1); // 1 2 + 3 *
-    let evaluatedResult = Eval_Postfix.evalPostfix_RPN(postfix_expr); //9
+    let postfix_expr = expr.convert_to_PostfixRPN(mathExpr1); // 1 2 + 3 *
+    let evaluatedResult = expr.eval_Expression(postfix_expr); //9
     console.log(evaluatedResult)
 
     //test2 
     let mathExpr2 = "1 + 2 * 3"
-    let resultforExpr2 = Eval_Postfix.evalPostfix_RPN(
-        Infix_toPostfix.toPostfix_RPN(mathExpr2)
+    let resultforExpr2 = expr.eval_Expression(
+        expr.convert_to_PostfixRPN(mathExpr2)
     );
     console.log(resultforExpr2) //7
 
     //test3
     let mathExpr3 = "2 ^ 3 + 5 * 7";
-    let resultforExpr3 = Eval_Postfix.evalPostfix_RPN(
-        Infix_toPostfix.toPostfix_RPN(mathExpr3)
+    let resultforExpr3 = expr.eval_Expression(
+        expr.convert_to_PostfixRPN(mathExpr3)
     );
     console.log(resultforExpr3) //43
 
     //test4
     let mathexpr4 = "( x - y ) * ( z + w ) / ( u + v )"
-    console.log(Infix_toPostfix.toPostfix_RPN(mathexpr4)) // x y - z w + * u v + /
+    console.log(expr.convert_to_PostfixRPN(mathexpr4)) // x y - z w + * u v + /
 
     //test5
     let mathexpr5 = "x * y / ( z - w + v * u )"
-    console.log(Infix_toPostfix.toPostfix_RPN(mathexpr5)) // x y * z w - v u * + /
+    console.log(expr.convert_to_PostfixRPN(mathexpr5)) // x y * z w - v u * + /
 
     //test6
     let mathexpr6 = "( x + y + z ) * ( w - v ) / u"
-    console.log(Infix_toPostfix.toPostfix_RPN(mathexpr6)) //x y + z + w v - * u /
+    console.log(expr.convert_to_PostfixRPN(mathexpr6)) //x y + z + w v - * u /
 
     //test7
     let mathexpr7 = "x ^ y + z * w - v / u"
-    console.log(Infix_toPostfix.toPostfix_RPN(mathexpr7)) // x y ^ z w * + v u / -
+    console.log(expr.convert_to_PostfixRPN(mathexpr7)) // x y ^ z w * + v u / -
 
     //test8
     let mathexpr8 = "2.2 + 7.89 * 9.45 - 6.79 ^ 3 * ( 44 / 3 ) / 9"
-    console.log(Eval_Postfix.evalPostfix_RPN(
-        Infix_toPostfix.toPostfix_RPN(mathexpr8)
+    console.log(expr.eval_Expression(
+        expr.convert_to_PostfixRPN(mathexpr8)
     )) // -433.3899042962963
     ```
