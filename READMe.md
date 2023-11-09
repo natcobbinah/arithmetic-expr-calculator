@@ -19,7 +19,7 @@ Supports **PEDMAS** order of computation, thus, all the operators of
 
     ```
 
-    import Expression from "./arithmetic-expr-calculator";
+    import {Expression} from "./arithmetic-expr-calculator";
 
     let expr = new Expression()
 
@@ -35,7 +35,7 @@ Supports **PEDMAS** order of computation, thus, all the operators of
 
     ```
 
-    import Expression from "./arithmetic-expr-calculator";
+    import {Expression} from "./arithmetic-expr-calculator";
 
     let expr = new Expression()
 
@@ -59,7 +59,7 @@ Supports **PEDMAS** order of computation, thus, all the operators of
 
     ```
 
-    import Expression from "./arithmetic-expr-calculator";
+    import {Expression} from "./arithmetic-expr-calculator";
     let expr = new Expression()
 
     //test1

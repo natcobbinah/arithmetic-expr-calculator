@@ -1,4 +1,4 @@
-import Expression from "./Expression";
+import { Expression } from "./Expression";
 
 let expr = new Expression()
 
