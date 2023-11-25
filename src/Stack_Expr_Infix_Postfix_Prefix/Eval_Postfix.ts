@@ -20,8 +20,12 @@ class Eval_Postfix {
         }
     }
 
-    public static evalPostfix_RPN(expr: String): number {
-        for (let term of expr.split(" ")) {
+    public static evalPostfix_RPN(expr: String[]): number {
+
+        //my problem lies here
+        console.log(expr)
+
+        for (let term of expr) {
             if (term === "+" || term === "-" || term === "/" ||
                 term === "*" || term === "^") {
                 let rhs_operand = this.stack.pop();

@@ -1,4 +1,6 @@
 import LinkedStack from "../Stack_ADT/LinkedStack";
+import TokenizeExpression from "./Tokenize_Expression";
+import ConvertToStandard_Expression from "./convert_toStandardExpression";
 
 class Infix_toPrefix {
     static stack = new LinkedStack<String>();
@@ -21,13 +23,21 @@ class Infix_toPrefix {
         }
     }
 
-    public static toPrefix_RPN(math_expression: String): String {
+    public static toPrefix_RPN(math_expression: string): String[] {
         let prefix_expr = "";
+
+        //remove all whitespaces from string
+        math_expression = math_expression.replace(/\s/g, '')
 
         //reverse infix expression
         math_expression = math_expression.split("").reverse().join("");
 
-        for (let term of math_expression.split(" ")) { // split by spaces
+        let cleanedExpression = ConvertToStandard_Expression.standardized_Expression(math_expression)
+        let tokenizedExpression = TokenizeExpression.tokenize(cleanedExpression)
+
+        console.log(tokenizedExpression)
+
+        for (let term of tokenizedExpression) { 
             if (this.rank(term) == 0) {
                 this.stack.push(term);
             } else if (term === "(") {
@@ -57,7 +67,9 @@ class Infix_toPrefix {
         //reverse output string to obtain prefix expression
         prefix_expr = prefix_expr.split("").reverse().join("");
 
-        return prefix_expr
+        console.log(prefix_expr)
+
+        return TokenizeExpression.splitByWhiteSpaces(prefix_expr)
 
     }
 }

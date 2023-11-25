@@ -20,8 +20,8 @@ class Eval_Prefix {
         }
     }
 
-    public static evalPrefix_RPN(expr: String): number {
-        let terms = expr.split(" ")
+    public static evalPrefix_RPN(terms: String[]): number {
+        //let terms = expr.split(" ")
         let pointer = terms.length - 1
 
         while (pointer >= 0) {

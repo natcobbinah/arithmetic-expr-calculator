@@ -9,6 +9,14 @@ Inspired from reading two major books:
 
 > A  Concise Introduction to Data Structures Using Java by Mark. J Johnson
 
+Test_Cases
+> Thanks to LeetCode Hard (https://leetcode.com/problems/basic-calculator/description/) and LeetCode Medium (https://leetcode.com/problems/basic-calculator-ii/description/), this implementation passes all those, and thus
+should solve your arithmetic-expression computations.
+
+[NOTE:] Implemented the solution using Shunting Yard (postfix) implementation,
+and thus using Postfix Methods, should pass all your testCases. The (prefix)
+implementation however, might have some few bugs
+
 ## Operators Supported
 Supports **PEDMAS** order of computation, thus, all the operators of 
 **Exponentiation, Division, Multiplication, Addition and Subtraction**, as well as using **Parentheses** for grouping and prioritization is all handled.
@@ -87,71 +95,68 @@ Supports **PEDMAS** order of computation, thus, all the operators of
 
     //test1
     let mathExpr1 = "( 1 + 2 ) * 3";
-    let postfix_expr = expr.convert_to_PostfixRPN(mathExpr1); // 1 2 + 3 *
-    let evaluatedResult = expr.eval_Expression(postfix_expr); //9
+    let postfix_expr = Infix_toPostfix.toPostfix_RPN(mathExpr1); // 1 2 + 3 *
+    let evaluatedResult = Eval_Postfix.evalPostfix_RPN(postfix_expr); //9
     console.log(evaluatedResult)
 
-    //test1 Prefix
-    let prefix_expr = expr.convert_to_PrefixRPN(mathExpr1); // * + 1 2 3 
-    let evaluatedResult_prefix = expr.eval_Expression_Prefix(prefix_expr); //9
-    console.log(evaluatedResult_prefix)
 
     //test2 
     let mathExpr2 = "1 + 2 * 3"
-    let resultforExpr2 = expr.eval_Expression(
-        expr.convert_to_PostfixRPN(mathExpr2)
+    let resultforExpr2 = Eval_Postfix.evalPostfix_RPN(
+        Infix_toPostfix.toPostfix_RPN(mathExpr2)
     );
     console.log(resultforExpr2) //7
 
-    //test2 prefix
-    let resultforExpr2_prefix = expr.eval_Expression_Prefix(
-        expr.convert_to_PrefixRPN(mathExpr2)
-    );
-    console.log(resultforExpr2_prefix) //7
-
+    
     //test3
     let mathExpr3 = "2 ^ 3 + 5 * 7";
-    let resultforExpr3 = expr.eval_Expression(
-        expr.convert_to_PostfixRPN(mathExpr3)
+    let resultforExpr3 = Eval_Postfix.evalPostfix_RPN(
+        Infix_toPostfix.toPostfix_RPN(mathExpr3)
     );
     console.log(resultforExpr3) //43
 
-    //test3 prefix
-    let resultforExpr3_prefix = expr.eval_Expression_Prefix(
-        expr.convert_to_PrefixRPN(mathExpr3)
-    );
-    console.log(resultforExpr3_prefix) //43
-
     //test4
-    let mathexpr4 = "( x - y ) * ( z + w ) / ( u + v )"
-    console.log(expr.convert_to_PostfixRPN(mathexpr4)) // x y - z w + * u v + /
-    console.log(expr.convert_to_PrefixRPN(mathexpr4)) // * - x y / + z w + u v 
+    let mathExpr4 = "1-11";
+    let resultforExpr4 = Eval_Postfix.evalPostfix_RPN(
+        Infix_toPostfix.toPostfix_RPN(mathExpr4)
+    );
+    console.log(resultforExpr4) //-10
 
     //test5
-    let mathexpr5 = "x * y / ( z - w + v * u )"
-    console.log(expr.convert_to_PostfixRPN(mathexpr5)) // x y * z w - v u * + /
-    console.log(expr.convert_to_PrefixRPN(mathexpr5)) // * x / y - z + w * v u
+    let mathExpr5 = "-1+2";
+    let resultforExpr5 = Eval_Postfix.evalPostfix_RPN(
+        Infix_toPostfix.toPostfix_RPN(mathExpr5)
+    );
+    console.log(resultforExpr5) //1   
 
     //test6
-    let mathexpr6 = "( x + y + z ) * ( w - v ) / u"
-    console.log(expr.convert_to_PostfixRPN(mathexpr6)) //x y + z + w v - * u /
-    console.log(expr.convert_to_PrefixRPN(mathexpr6)) //* + x + y z / - w v u
+    let mathexpr6 = "( x - y ) * ( z + w ) / ( u + v )"
+    console.log(Infix_toPostfix.toPostfix_RPN(mathexpr6)) // x y - z w + * u v + /
 
     //test7
-    let mathexpr7 = "x ^ y + z * w - v / u"
-    console.log(expr.convert_to_PostfixRPN(mathexpr7)) // x y ^ z w * + v u / -
-    console.log(expr.convert_to_PrefixRPN(mathexpr7)) // + ^ x y - * z w / v u
+    let mathexpr7 = "x * y / ( z - w + v * u )"
+    console.log(Infix_toPostfix.toPostfix_RPN(mathexpr7)) // x y * z w - v u * + /
 
     //test8
-    let mathexpr8 = "2.2 + 7.89 * 9.45 - 6.79 ^ 3 * ( 44 / 3 ) / 9"
-    console.log(expr.eval_Expression(
-        expr.convert_to_PostfixRPN(mathexpr8)
-    )) // -433.3899042962963
+    let mathexpr8 = "( x + y + z ) * ( w - v ) / u"
+    console.log(Infix_toPostfix.toPostfix_RPN(mathexpr8)) //x y + z + w v - * u /
 
-    //test8 prefix
-    console.log(expr.eval_Expression_Prefix(
-        expr.convert_to_PrefixRPN(mathexpr8)
-    )) // -433.3899042962963
+    //test9
+    let mathexpr9 = "x ^ y + z * w - v / u"
+    console.log(Infix_toPostfix.toPostfix_RPN(mathexpr9)) // x y ^ z w * + v u / -
+
+
+    //test10
+    let mathexpr10 = "2.2 + 7.89 * 9.45 - 6.79 ^ 3 * ( 44 / 3 ) / 9"
+    console.log(Eval_Postfix.evalPostfix_RPN(
+        Infix_toPostfix.toPostfix_RPN(mathexpr10)
+    )) // -433.3899042962963   
+
+    //test11
+    let mathexpr11 = "1- ( -2)"
+    console.log(Eval_Postfix.evalPostfix_RPN(
+        Infix_toPostfix.toPostfix_RPN(mathexpr11)
+    )) //3
     ```
 
 ### Using TypeScript
@@ -162,69 +167,66 @@ Supports **PEDMAS** order of computation, thus, all the operators of
 
     //test1
     let mathExpr1 = "( 1 + 2 ) * 3";
-    let postfix_expr = expr.convert_to_PostfixRPN(mathExpr1); // 1 2 + 3 *
-    let evaluatedResult = expr.eval_Expression(postfix_expr); //9
+    let postfix_expr = Infix_toPostfix.toPostfix_RPN(mathExpr1); // 1 2 + 3 *
+    let evaluatedResult = Eval_Postfix.evalPostfix_RPN(postfix_expr); //9
     console.log(evaluatedResult)
 
-    //test1 Prefix
-    let prefix_expr = expr.convert_to_PrefixRPN(mathExpr1); // * + 1 2 3 
-    let evaluatedResult_prefix = expr.eval_Expression_Prefix(prefix_expr); //9
-    console.log(evaluatedResult_prefix)
 
     //test2 
     let mathExpr2 = "1 + 2 * 3"
-    let resultforExpr2 = expr.eval_Expression(
-        expr.convert_to_PostfixRPN(mathExpr2)
+    let resultforExpr2 = Eval_Postfix.evalPostfix_RPN(
+        Infix_toPostfix.toPostfix_RPN(mathExpr2)
     );
     console.log(resultforExpr2) //7
 
-    //test2 prefix
-    let resultforExpr2_prefix = expr.eval_Expression_Prefix(
-        expr.convert_to_PrefixRPN(mathExpr2)
-    );
-    console.log(resultforExpr2_prefix) //7
-
+    
     //test3
     let mathExpr3 = "2 ^ 3 + 5 * 7";
-    let resultforExpr3 = expr.eval_Expression(
-        expr.convert_to_PostfixRPN(mathExpr3)
+    let resultforExpr3 = Eval_Postfix.evalPostfix_RPN(
+        Infix_toPostfix.toPostfix_RPN(mathExpr3)
     );
     console.log(resultforExpr3) //43
 
-    //test3 prefix
-    let resultforExpr3_prefix = expr.eval_Expression_Prefix(
-        expr.convert_to_PrefixRPN(mathExpr3)
-    );
-    console.log(resultforExpr3_prefix) //43
-
     //test4
-    let mathexpr4 = "( x - y ) * ( z + w ) / ( u + v )"
-    console.log(expr.convert_to_PostfixRPN(mathexpr4)) // x y - z w + * u v + /
-    console.log(expr.convert_to_PrefixRPN(mathexpr4)) // * - x y / + z w + u v 
+    let mathExpr4 = "1-11";
+    let resultforExpr4 = Eval_Postfix.evalPostfix_RPN(
+        Infix_toPostfix.toPostfix_RPN(mathExpr4)
+    );
+    console.log(resultforExpr4) //-10
 
     //test5
-    let mathexpr5 = "x * y / ( z - w + v * u )"
-    console.log(expr.convert_to_PostfixRPN(mathexpr5)) // x y * z w - v u * + /
-    console.log(expr.convert_to_PrefixRPN(mathexpr5)) // * x / y - z + w * v u
+    let mathExpr5 = "-1+2";
+    let resultforExpr5 = Eval_Postfix.evalPostfix_RPN(
+        Infix_toPostfix.toPostfix_RPN(mathExpr5)
+    );
+    console.log(resultforExpr5) //1   
 
     //test6
-    let mathexpr6 = "( x + y + z ) * ( w - v ) / u"
-    console.log(expr.convert_to_PostfixRPN(mathexpr6)) //x y + z + w v - * u /
-    console.log(expr.convert_to_PrefixRPN(mathexpr6)) //* + x + y z / - w v u
+    let mathexpr6 = "( x - y ) * ( z + w ) / ( u + v )"
+    console.log(Infix_toPostfix.toPostfix_RPN(mathexpr6)) // x y - z w + * u v + /
 
     //test7
-    let mathexpr7 = "x ^ y + z * w - v / u"
-    console.log(expr.convert_to_PostfixRPN(mathexpr7)) // x y ^ z w * + v u / -
-    console.log(expr.convert_to_PrefixRPN(mathexpr7)) // + ^ x y - * z w / v u
+    let mathexpr7 = "x * y / ( z - w + v * u )"
+    console.log(Infix_toPostfix.toPostfix_RPN(mathexpr7)) // x y * z w - v u * + /
 
     //test8
-    let mathexpr8 = "2.2 + 7.89 * 9.45 - 6.79 ^ 3 * ( 44 / 3 ) / 9"
-    console.log(expr.eval_Expression(
-        expr.convert_to_PostfixRPN(mathexpr8)
-    )) // -433.3899042962963
+    let mathexpr8 = "( x + y + z ) * ( w - v ) / u"
+    console.log(Infix_toPostfix.toPostfix_RPN(mathexpr8)) //x y + z + w v - * u /
 
-    //test8 prefix
-    console.log(expr.eval_Expression_Prefix(
-        expr.convert_to_PrefixRPN(mathexpr8)
-    )) // -433.3899042962963
+    //test9
+    let mathexpr9 = "x ^ y + z * w - v / u"
+    console.log(Infix_toPostfix.toPostfix_RPN(mathexpr9)) // x y ^ z w * + v u / -
+
+
+    //test10
+    let mathexpr10 = "2.2 + 7.89 * 9.45 - 6.79 ^ 3 * ( 44 / 3 ) / 9"
+    console.log(Eval_Postfix.evalPostfix_RPN(
+        Infix_toPostfix.toPostfix_RPN(mathexpr10)
+    )) // -433.3899042962963   
+
+    //test11
+    let mathexpr11 = "1- ( -2)"
+    console.log(Eval_Postfix.evalPostfix_RPN(
+        Infix_toPostfix.toPostfix_RPN(mathexpr11)
+    )) //3
     ```
