@@ -2,7 +2,6 @@ class ConvertToStandard_Expression{
 
     public static standardized_Expression(math_expression: string){
         let standard_expr = ""
-        //math_expression = math_expression.replace(" ","")
         let i = 0
 
         while (i < math_expression.length){

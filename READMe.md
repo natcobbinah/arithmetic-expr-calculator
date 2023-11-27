@@ -10,12 +10,11 @@ Inspired from reading two major books:
 > A  Concise Introduction to Data Structures Using Java by Mark. J Johnson
 
 Test_Cases
-> Thanks to LeetCode Hard (https://leetcode.com/problems/basic-calculator/description/) and LeetCode Medium (https://leetcode.com/problems/basic-calculator-ii/description/), this implementation passes all those, and thus
-should solve your arithmetic-expression computations.
+> Thanks to LeetCode Hard (https://leetcode.com/problems/basic-calculator/description/) and LeetCode Medium (https://leetcode.com/problems/basic-calculator-ii/description/), this implementation passes all those, and thus should solve your arithmetic-expression computations.
 
 [NOTE:] Implemented the solution using Shunting Yard (postfix) implementation,
 and thus using Postfix Methods, should pass all your testCases. The (prefix)
-implementation however, might have some few bugs
+implementation however,  have some few bugs for inputs such as [ 1- ( -2) and (-1+2)]
 
 ## Operators Supported
 Supports **PEDMAS** order of computation, thus, all the operators of 
@@ -157,6 +156,12 @@ Supports **PEDMAS** order of computation, thus, all the operators of
     console.log(Eval_Postfix.evalPostfix_RPN(
         Infix_toPostfix.toPostfix_RPN(mathexpr11)
     )) //3
+
+    //test12
+    let mathexpr12 = "1234567"
+    console.log(Eval_Postfix.evalPostfix_RPN(
+        Infix_toPostfix.toPostfix_RPN(mathexpr12)
+    )) //1234567
     ```
 
 ### Using TypeScript
@@ -229,4 +234,10 @@ Supports **PEDMAS** order of computation, thus, all the operators of
     console.log(Eval_Postfix.evalPostfix_RPN(
         Infix_toPostfix.toPostfix_RPN(mathexpr11)
     )) //3
+
+    //test12
+    let mathexpr12 = "1234567"
+    console.log(Eval_Postfix.evalPostfix_RPN(
+        Infix_toPostfix.toPostfix_RPN(mathexpr12)
+    )) //1234567
     ```

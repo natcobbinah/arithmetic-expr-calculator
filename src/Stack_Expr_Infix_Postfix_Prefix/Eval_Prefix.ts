@@ -21,7 +21,8 @@ class Eval_Prefix {
     }
 
     public static evalPrefix_RPN(terms: String[]): number {
-        //let terms = expr.split(" ")
+        let final_result = ""
+
         let pointer = terms.length - 1
 
         while (pointer >= 0) {
@@ -39,7 +40,16 @@ class Eval_Prefix {
             pointer -= 1
         }
 
-        return Number(this.stack.pop());
+        // should in case only operand with no operators are keyed as input
+        if (this.stack.size() > 1) {
+            while (!this.stack.isEmpty()) {
+                final_result += this.stack.pop()
+            }
+            return Number(final_result)
+        }
+        else {
+            return Number(this.stack.pop());
+        }
     }
 }
 

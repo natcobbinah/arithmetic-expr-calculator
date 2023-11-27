@@ -21,8 +21,8 @@ class Eval_Postfix {
     }
 
     public static evalPostfix_RPN(expr: String[]): number {
+        let final_result = ""
 
-        //my problem lies here
         console.log(expr)
 
         for (let term of expr) {
@@ -36,7 +36,17 @@ class Eval_Postfix {
                 this.stack.push(term);
             }
         }
-        return Number(this.stack.pop());
+
+        // should in case only operand with no operators are keyed as input
+        if (this.stack.size() > 1) {
+            while (!this.stack.isEmpty()) {
+                final_result += this.stack.pop()
+            }
+            return Number(final_result)
+        }
+        else {
+            return Number(this.stack.pop());
+        }
     }
 }
 

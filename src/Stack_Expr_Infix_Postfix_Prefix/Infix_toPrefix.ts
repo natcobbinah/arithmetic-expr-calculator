@@ -29,15 +29,16 @@ class Infix_toPrefix {
         //remove all whitespaces from string
         math_expression = math_expression.replace(/\s/g, '')
 
-        //reverse infix expression
-        math_expression = math_expression.split("").reverse().join("");
-
         let cleanedExpression = ConvertToStandard_Expression.standardized_Expression(math_expression)
-        let tokenizedExpression = TokenizeExpression.tokenize(cleanedExpression)
+
+        //reverse infix expression
+        math_expression = cleanedExpression.split("").reverse().join("");
+
+        let tokenizedExpression = TokenizeExpression.tokenize(math_expression)
 
         console.log(tokenizedExpression)
 
-        for (let term of tokenizedExpression) { 
+        for (let term of tokenizedExpression) {
             if (this.rank(term) == 0) {
                 this.stack.push(term);
             } else if (term === "(") {

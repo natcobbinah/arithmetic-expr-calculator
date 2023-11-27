@@ -65,3 +65,9 @@ let mathexpr11 = "1- ( -2)"
 console.log(Eval_Postfix.evalPostfix_RPN(
     Infix_toPostfix.toPostfix_RPN(mathexpr11)
 )) //3
+
+//test12
+let mathexpr12 = "1234567"
+console.log(Eval_Postfix.evalPostfix_RPN(
+    Infix_toPostfix.toPostfix_RPN(mathexpr12)
+)) //1234567

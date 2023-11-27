@@ -61,8 +61,14 @@ console.log(Eval_Prefix.evalPrefix_RPN(
 )) // -433.3899042962963   
 
 //test11
-let mathexpr11 = "1- ( -2)"
+let mathexpr11 = "1- ( -2)" //bug here zh
 console.log(Eval_Prefix.evalPrefix_RPN(
     Infix_toPrefix.toPrefix_RPN(mathexpr11)
 )) //3
+
+//test12
+let mathexpr12 = "1234567"
+console.log(Eval_Prefix.evalPrefix_RPN(
+    Infix_toPrefix.toPrefix_RPN(mathexpr12)
+)) //1234567
 
