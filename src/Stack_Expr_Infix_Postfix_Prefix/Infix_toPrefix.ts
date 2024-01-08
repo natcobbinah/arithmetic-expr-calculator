@@ -23,6 +23,7 @@ class Infix_toPrefix {
         }
     }
 
+
     public static toPrefix_RPN(math_expression: string): String[] {
         let prefix_expr = "";
 
@@ -33,6 +34,8 @@ class Infix_toPrefix {
 
         //reverse infix expression
         math_expression = cleanedExpression.split("").reverse().join("");
+
+        console.log("mathexpr=" + math_expression)
 
         let tokenizedExpression = TokenizeExpression.tokenize(math_expression)
 
@@ -48,7 +51,9 @@ class Infix_toPrefix {
                 }
                 this.stack.pop();
             } else if (this.rank(term) > 0) {
-                while (!this.stack.isEmpty() && this.rank(this.stack.peek()) >= this.rank(term)) {
+                //in prefix, we pop only operators that have greater than (>) precedence, and not greater than or equal to (>=) 
+                // as in the case with postfix
+                while (!this.stack.isEmpty() && this.rank(this.stack.peek()) > this.rank(term)) {
                     prefix_expr += this.SPACE;
                     prefix_expr += this.stack.pop();
                 }
@@ -68,7 +73,7 @@ class Infix_toPrefix {
         //reverse output string to obtain prefix expression
         prefix_expr = prefix_expr.split("").reverse().join("");
 
-        console.log(prefix_expr)
+        console.log("Prefix Expression = " + prefix_expr)
 
         return TokenizeExpression.splitByWhiteSpaces(prefix_expr)
 

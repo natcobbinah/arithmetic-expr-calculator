@@ -15,7 +15,7 @@ let resultforExpr2 = Eval_Prefix.evalPrefix_RPN(
 );
 console.log(resultforExpr2) //7
 
- 
+
 //test3
 let mathExpr3 = "2 ^ 3 + 5 * 7";
 let resultforExpr3 = Eval_Prefix.evalPrefix_RPN(
@@ -33,35 +33,35 @@ console.log(resultforExpr4) //-10
 //test5
 let mathExpr5 = "-1+2";
 let resultforExpr5 = Eval_Prefix.evalPrefix_RPN(
-    Infix_toPrefix.toPrefix_RPN(mathExpr5) // -  + 1 2 
+    Infix_toPrefix.toPrefix_RPN(mathExpr5) // + - 0 1 2
 );
 console.log(resultforExpr5) //1   
 
 //test6
 let mathexpr6 = "( x - y ) * ( z + w ) / ( u + v )"
-console.log(Infix_toPrefix.toPrefix_RPN(mathexpr6)) // x y - z w + * u v + /
+console.log(Infix_toPrefix.toPrefix_RPN(mathexpr6)) //    / *  - x y   + z w   + u v
 
 //test7
 let mathexpr7 = "x * y / ( z - w + v * u )"
-console.log(Infix_toPrefix.toPrefix_RPN(mathexpr7)) // x y * z w - v u * + /
+console.log(Infix_toPrefix.toPrefix_RPN(mathexpr7)) //     / * x y  + - z w * v u
 
 //test8
 let mathexpr8 = "( x + y + z ) * ( w - v ) / u"
-console.log(Infix_toPrefix.toPrefix_RPN(mathexpr8)) //x y + z + w v - * u /
+console.log(Infix_toPrefix.toPrefix_RPN(mathexpr8)) //    / *  + + x y z   - w v  u
 
 //test9
 let mathexpr9 = "x ^ y + z * w - v / u"
-console.log(Infix_toPrefix.toPrefix_RPN(mathexpr9)) // x y ^ z w * + v u / -
+console.log(Infix_toPrefix.toPrefix_RPN(mathexpr9)) //     - + ^ x y * z w / v u
 
 
 //test10
 let mathexpr10 = "2.2 + 7.89 * 9.45 - 6.79 ^ 3 * ( 44 / 3 ) / 9"
 console.log(Eval_Prefix.evalPrefix_RPN(
     Infix_toPrefix.toPrefix_RPN(mathexpr10)
-)) // -433.3899042962963   
+)) // -433.3899042962963    
 
 //test11
-let mathexpr11 = "1- ( -2)" //bug here zh
+let mathexpr11 = "1 - ( - 2)" //bug here zh
 console.log(Eval_Prefix.evalPrefix_RPN(
     Infix_toPrefix.toPrefix_RPN(mathexpr11)
 )) //3

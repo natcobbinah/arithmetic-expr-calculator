@@ -24,8 +24,6 @@ class Infix_toPostfix {
     }
 
     public static toPostfix_RPN(math_expression: string): String[] {
-        let postfix_expr = "";
-
         //remove all whitespaces from string
         math_expression = math_expression.replace(/\s/g, '')
 
@@ -33,6 +31,16 @@ class Infix_toPostfix {
         let tokenizedExpression = TokenizeExpression.tokenize(cleanedExpression)
 
         console.log(tokenizedExpression)
+
+        let postfix_expr = this.postfix_SubModule(tokenizedExpression)
+
+        console.log(postfix_expr)
+
+        return TokenizeExpression.splitByWhiteSpaces(postfix_expr)
+    }
+
+    public static postfix_SubModule(tokenizedExpression: String[]) {
+        let postfix_expr = "";
 
         for (let term of tokenizedExpression) {
             if (this.rank(term) == 0) {
@@ -61,8 +69,7 @@ class Infix_toPostfix {
             postfix_expr += this.stack.pop();
         }
 
-        console.log(postfix_expr)
-        return TokenizeExpression.splitByWhiteSpaces(postfix_expr)
+        return postfix_expr
     }
 }
 

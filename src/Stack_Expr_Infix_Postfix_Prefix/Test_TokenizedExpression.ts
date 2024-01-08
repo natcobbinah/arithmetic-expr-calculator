@@ -4,7 +4,7 @@ let math_expr = "1+2-3/6*4"
 let output = TokenizeExpression.tokenize(math_expr)
 console.log(output) //['1', '+', '2','-', '3', '/','6', '*', '4']
 
-let math_expr2 = "1-(-2)"
+let math_expr2 = "1-(0-2)"
 let output2 = TokenizeExpression.tokenize(math_expr2)
 console.log(output2) //['1', '-',  '','(', '-2', ')','']
 

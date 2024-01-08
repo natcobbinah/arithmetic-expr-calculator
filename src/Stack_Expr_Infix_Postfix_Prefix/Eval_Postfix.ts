@@ -3,7 +3,7 @@ import LinkedStack from "../Stack_ADT/LinkedStack";
 class Eval_Postfix {
     static stack = new LinkedStack<String>();
 
-    private static calc(term: String, lhs_operand: number, rhs_operand: number): number {
+    public static calc(term: String, lhs_operand: number, rhs_operand: number): number {
         switch (term) {
             case "+":
                 return lhs_operand + rhs_operand;
@@ -23,7 +23,7 @@ class Eval_Postfix {
     public static evalPostfix_RPN(expr: String[]): number {
         let final_result = ""
 
-        console.log(expr)
+        //console.log(expr)
 
         for (let term of expr) {
             if (term === "+" || term === "-" || term === "/" ||
