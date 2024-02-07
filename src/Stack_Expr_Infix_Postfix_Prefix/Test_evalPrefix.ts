@@ -72,3 +72,9 @@ console.log(Eval_Prefix.evalPrefix_RPN(
     Infix_toPrefix.toPrefix_RPN(mathexpr12)
 )) //1234567
 
+//test13
+let mathexpr13 = "20 + (34 + 8 - (15 - 7) + 21) - 26"
+console.log(Eval_Prefix.evalPrefix_RPN(
+    Infix_toPrefix.toPrefix_RPN(mathexpr13)
+)) //49
+

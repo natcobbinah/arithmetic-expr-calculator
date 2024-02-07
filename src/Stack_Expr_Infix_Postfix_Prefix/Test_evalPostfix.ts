@@ -15,7 +15,7 @@ let resultforExpr2 = Eval_Postfix.evalPostfix_RPN(
 );
 console.log(resultforExpr2) //7
 
- 
+
 //test3
 let mathExpr3 = "2 ^ 3 + 5 * 7";
 let resultforExpr3 = Eval_Postfix.evalPostfix_RPN(
@@ -71,3 +71,9 @@ let mathexpr12 = "1234567"
 console.log(Eval_Postfix.evalPostfix_RPN(
     Infix_toPostfix.toPostfix_RPN(mathexpr12)
 )) //1234567
+
+//test13
+let mathexpr13 = "20 + (34 + 8 - (15 - 7) + 21) - 26"
+console.log(Eval_Postfix.evalPostfix_RPN(
+    Infix_toPostfix.toPostfix_RPN(mathexpr13)
+)) //49
