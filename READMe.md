@@ -15,7 +15,7 @@ Other resources for extended functionalities and implementation:
 Test_Cases
 > Thanks to LeetCode Hard (https://leetcode.com/problems/basic-calculator/description/) and LeetCode Medium (https://leetcode.com/problems/basic-calculator-ii/description/), this implementation passes all those, and thus should solve your arithmetic-expression computations.
 
-[Original Implementation (Basic Calculator) Source Code:] (https://github.com/natcobbinah/Python_prog/blob/master/python_dsa%20-%20Dr%20Basant%20Agarwal%20et%20al/trees/expression_tree/basic_calculator.py)
+[Original Implementation (Basic Calculator) Leetcode:] (https://github.com/natcobbinah/Python_prog/blob/master/python_dsa%20-%20Dr%20Basant%20Agarwal%20et%20al/trees/expression_tree/basic_calculator.py)
 
 [NOTE:] Implementation supports both Shunting Yard (postfix/prefix) approaches, thus
 either method invocation should yield the same result
@@ -24,12 +24,14 @@ either method invocation should yield the same result
 Supports **PEDMAS** order of computation, thus, all the operators of 
 **Exponentiation, Division, Multiplication, Addition and Subtraction**, as well as using **Parentheses** for grouping and prioritization is all handled.
 
-> Multiplication operator can be denoted by either **x or ***
-> Likewise, Division operator can be denoted by either **/ or ÷** 
-> The modulo operator is also supported as well, denoted by **Mod**
+> **Multiplication** operator can be denoted by either **x  or  \***
+
+> Likewise, **Division** operator can be denoted by either **/  or  ÷**
+
+> The **modulo** operator is also supported as well, denoted by **Mod**
 
 ### Extended Functionalities
-Supported operators, extending the arithmetic-expr-calculator include the following functions:
+Supported operators, extending the arithmetic-expr-calculator functionality includes the following functions:
 
 --------------------------------------------------------------------
 | Symbol          | Function name       | Usage                    |
@@ -52,7 +54,7 @@ Supported operators, extending the arithmetic-expr-calculator include the follow
 --------------------------------------------------------------------
 [NOTE:] args => number
 
-See usage in sample example  demonstration
+See usage in sample examples  demonstration
 
 ## Usage in Project
 To interface this library in projects, here is a  link to typescript demo of the application
