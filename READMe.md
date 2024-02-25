@@ -60,6 +60,9 @@ See usage in sample examples  demonstration
 To interface this library in projects, here is a  link to typescript demo of the application
 > https://jolly-starburst-7073ef.netlify.app/
 
+![arithmetic_expr_calc](https://github.com/natcobbinah/arithmetic-expr-calculator/assets/10479361/ffc950f8-5016-424a-b39a-7227ab93e73a)
+
+
 The code for the TypeScript Calculator UI, is hosted on github at:
 > https://github.com/natcobbinah/TypeScript-Calculator-UI
 
