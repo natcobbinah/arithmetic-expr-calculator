@@ -9,8 +9,13 @@ Inspired from reading two major books:
 
 > A  Concise Introduction to Data Structures Using Java by Mark. J Johnson
 
+Other resources for extended functionalities and implementation:
+> https://en.wikipedia.org/wiki/Shunting_yard_algorithm
+
 Test_Cases
 > Thanks to LeetCode Hard (https://leetcode.com/problems/basic-calculator/description/) and LeetCode Medium (https://leetcode.com/problems/basic-calculator-ii/description/), this implementation passes all those, and thus should solve your arithmetic-expression computations.
+
+[Original Implementation (Basic Calculator) Source Code:] (https://github.com/natcobbinah/Python_prog/blob/master/python_dsa%20-%20Dr%20Basant%20Agarwal%20et%20al/trees/expression_tree/basic_calculator.py)
 
 [NOTE:] Implementation supports both Shunting Yard (postfix/prefix) approaches, thus
 either method invocation should yield the same result
@@ -18,6 +23,36 @@ either method invocation should yield the same result
 ## Operators Supported
 Supports **PEDMAS** order of computation, thus, all the operators of 
 **Exponentiation, Division, Multiplication, Addition and Subtraction**, as well as using **Parentheses** for grouping and prioritization is all handled.
+
+> Multiplication operator can be denoted by either **x or ***
+> Likewise, Division operator can be denoted by either **/ or ÷** 
+> The modulo operator is also supported as well, denoted by **Mod**
+
+### Extended Functionalities
+Supported operators, extending the arithmetic-expr-calculator include the following functions:
+
+--------------------------------------------------------------------
+| Symbol          | Function name       | Usage                    |
+| --------------- | ------------------  | --------------------------
+| !               |  Factorial          | a!, where a =>  number   |
+| C               |  Combination        | aPb, where a,b => numbers|
+| P               |  Permuation         | aCb, where a,b => numbers|
+| Γ               |  Gamma              | Γ(args)                  |
+| sin             |  Sine               | sin(args)                |
+| cos             |  Cosine             | cos(args)                |
+| tan             |  Tangent            | tan(args)                |
+| cosec           |  1 / sin            | csc(args)                |
+| sec             |  1 / cos            | sec(args)                |
+| cot             |  1 / tan            | cot(args)                |
+| arcsin          |  sin^-1(args)       | arcsin(args)             |
+| arccos          |  cos^-1(args)       | arccos(args)             |
+| arctan          |  tan^-1(args)       | arctan(args)             |
+| log             |  logarithm          | log(args)                |
+| ln              |  natural logarithm  | ln(args)                 |
+--------------------------------------------------------------------
+[NOTE:] args => number
+
+See usage in sample example  demonstration
 
 ## Usage in Project
 To interface this library in projects, here is a  link to typescript demo of the application
@@ -30,7 +65,6 @@ The code for the TypeScript Calculator UI, is hosted on github at:
 > Getting the **Postfix or Prefix** Reverse Polish Notation
 
     ```
-
     import {Expression} from "arithmetic-expr-calculator";
 
     let expr = new Expression()
@@ -49,7 +83,6 @@ The code for the TypeScript Calculator UI, is hosted on github at:
 
     //prefix
     console.log(expr.convert_to_PrefixRPN(mathExpr))
-
     ```
 
 > Getting **evaluated Infix arithmetic expression**
@@ -97,7 +130,7 @@ The code for the TypeScript Calculator UI, is hosted on github at:
     let arithmeticExpr = require("arithmetic-expr-calculator");
     let expr = new arithmeticExpr.Expression()
 
-   //test1
+    //test1
     let mathExpr1 = "( 1 + 2 ) * 3"; //or "(1+2)*3" with no white space will still yield the same result
     let postfix_expr = expr.convert_to_PostfixRPN(mathExpr1); // 1 2 + 3 *
     let evaluatedResult = expr.eval_Expression(postfix_expr); //9
@@ -165,7 +198,55 @@ The code for the TypeScript Calculator UI, is hosted on github at:
     let resultforExpr12 = expr.eval_Expression(
         expr.convert_to_PostfixRPN(mathExpr12)  //0 1 - 2  +
     );
-    console.log(`-1+2 = ${resultforExpr12}`) //1    
+    console.log(`-1+2 = ${resultforExpr12}`) //1  
+
+    //test13
+    let mathexpr13 = "20 + (34 + 8 - (15 - 7) + 21) - 26"
+    console.log(expr.eval_Expression(
+        expr.convert_to_PostfixRPN(mathexpr13)
+    )) //49
+
+    //test14 - Combination
+    let mathExpr14 = "6C2 * 16"
+    console.log(expr.eval_Expression(
+        expr.convert_to_PostfixRPN(mathExpr14) // 240
+    ))
+
+    //test15 - Permutation
+    let mathExpr15 = "6P2 + 9 / 3"
+    console.log(expr.eval_Expression(
+        expr.convert_to_PostfixRPN(mathExpr15) // 33
+    ))
+
+    //test16 - uses variant symbol of multiplication 
+    let mathExpr16 = "5! x 9P2"
+    console.log(expr.eval_Expression(
+        expr.convert_to_PostfixRPN(mathExpr16) // 8640
+    ))
+
+    //test17 - Modulo example
+    let mathExpr17 = "7 Mod 2 x 3"
+    console.log(expr.eval_Expression(
+        expr.convert_to_PostfixRPN(mathExpr17) // 3
+    ))
+
+    //test18 - Trignometry functions example
+    let mathExpr18 = "sin ( cos ( 2 ) / 3 * 9 )"
+    console.log(expr.eval_Expression(
+        expr.convert_to_PostfixRPN(mathExpr18)) //-0.9484917234
+    )
+
+    //test19 - Gamma 
+    let mathExpr19 = "Γ(6) * 4!"
+    console.log(expr.eval_Expression(
+        expr.convert_to_PostfixRPN(mathExpr19)) //2880
+    )
+
+    //test20 - Natural Logarithm
+    let mathExpr20 = "ln(2) + 4"
+    console.log(expr.eval_Expression(
+        expr.convert_to_PostfixRPN(mathExpr20)) //4.69314718056
+    )  
     ```
 
 ### Using TypeScript
@@ -242,5 +323,53 @@ The code for the TypeScript Calculator UI, is hosted on github at:
     let resultforExpr12 = expr.eval_Expression(
         expr.convert_to_PostfixRPN(mathExpr12)  //0 1 - 2  +
     );
-    console.log(`-1+2 = ${resultforExpr12}`) //1   
+    console.log(`-1+2 = ${resultforExpr12}`) //1  
+
+    //test13
+    let mathexpr13 = "20 + (34 + 8 - (15 - 7) + 21) - 26"
+    console.log(expr.eval_Expression(
+        expr.convert_to_PostfixRPN(mathexpr13)
+    )) //49
+
+    //test14 - Combination
+    let mathExpr14 = "6C2 * 16"
+    console.log(expr.eval_Expression(
+        expr.convert_to_PostfixRPN(mathExpr14) // 240
+    ))
+
+    //test15 - Permutation
+    let mathExpr15 = "6P2 + 9 / 3"
+    console.log(expr.eval_Expression(
+        expr.convert_to_PostfixRPN(mathExpr15) // 33
+    ))
+
+    //test16 - uses variant symbol of multiplication 
+    let mathExpr16 = "5! x 9P2"
+    console.log(expr.eval_Expression(
+        expr.convert_to_PostfixRPN(mathExpr16) // 8640
+    ))
+
+    //test17 - Modulo example
+    let mathExpr17 = "7 Mod 2 x 3"
+    console.log(expr.eval_Expression(
+        expr.convert_to_PostfixRPN(mathExpr17) // 3
+    ))
+
+    //test18 - Trignometry functions example
+    let mathExpr18 = "sin ( cos ( 2 ) / 3 * 9 )"
+    console.log(expr.eval_Expression(
+        expr.convert_to_PostfixRPN(mathExpr18)) //-0.9484917234
+    )
+
+    //test19 - Gamma 
+    let mathExpr19 = "Γ(6) * 4!"
+    console.log(expr.eval_Expression(
+        expr.convert_to_PostfixRPN(mathExpr19)) //2880
+    )
+
+    //test20 - Natural logarithm
+    let mathExpr20 = "ln(2) + 4"
+    console.log(expr.eval_Expression(
+        expr.convert_to_PostfixRPN(mathExpr20)) //4.69314718056
+    ) 
     ```

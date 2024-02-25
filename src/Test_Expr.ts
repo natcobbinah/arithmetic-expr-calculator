@@ -71,3 +71,51 @@ let resultforExpr12 = expr.eval_Expression(
     expr.convert_to_PostfixRPN(mathExpr12)  //0 1 - 2  +
 );
 console.log(`-1+2 = ${resultforExpr12}`) //1   
+
+//test13
+let mathexpr13 = "20 + (34 + 8 - (15 - 7) + 21) - 26"
+console.log(expr.eval_Expression(
+    expr.convert_to_PostfixRPN(mathexpr13)
+)) //49
+
+//test14 - Combination
+let mathExpr14 = "6C2 * 16"
+console.log(expr.eval_Expression(
+    expr.convert_to_PostfixRPN(mathExpr14) // 240
+))
+
+//test15 - Permutation
+let mathExpr15 = "6P2 + 9 / 3"
+console.log(expr.eval_Expression(
+    expr.convert_to_PostfixRPN(mathExpr15) // 33
+))
+
+//test16 - uses variant symbol of multiplication 
+let mathExpr16 = "5! x 9P2"
+console.log(expr.eval_Expression(
+    expr.convert_to_PostfixRPN(mathExpr16) // 8640
+))
+
+//test17 - Modulo example
+let mathExpr17 = "7 Mod 2 x 3"
+console.log(expr.eval_Expression(
+    expr.convert_to_PostfixRPN(mathExpr17) // 3
+))
+
+//test18 - Trignometry functions example
+let mathExpr18 = "sin ( cos ( 2 ) / 3 * 9 )"
+console.log(expr.eval_Expression(
+    expr.convert_to_PostfixRPN(mathExpr18)) //-0.9484917234
+)
+
+//test19 - Gamma 
+let mathExpr19 = "Γ(6) * 4!"
+console.log(expr.eval_Expression(
+    expr.convert_to_PostfixRPN(mathExpr19)) //2880
+)
+
+//test20
+let mathExpr20 = "ln(2) + 4"
+console.log(expr.eval_Expression(
+    expr.convert_to_PostfixRPN(mathExpr20)) //4.69314718056
+)

@@ -8,13 +8,18 @@ class Infix_toPostfix {
 
     private static rank(term: String): number {
         switch (term) {
+            case "!": case "sin": case "cos": case "tan":
+            case "sec": case "csc": case "cot":
+            case "arcsin": case "arccos": case "arctan":
+            case "log": case "ln": case "Γ":
+                return 5
+            case "C": case "P":
+                return 4
             case "^":
                 return 3;
-            case "*":
-            case "/":
+            case "*": case "x": case "/": case "÷": case "Mod":
                 return 2;
-            case "+":
-            case "-":
+            case "+": case "-":
                 return 1;
             case "(":
                 return 0;

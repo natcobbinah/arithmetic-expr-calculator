@@ -77,3 +77,39 @@ let mathexpr13 = "20 + (34 + 8 - (15 - 7) + 21) - 26"
 console.log(Eval_Postfix.evalPostfix_RPN(
     Infix_toPostfix.toPostfix_RPN(mathexpr13)
 )) //49
+
+//test14
+let mathExpr14 = "6C2 * 16"
+console.log(Eval_Postfix.evalPostfix_RPN(
+    Infix_toPostfix.toPostfix_RPN(mathExpr14) // 240
+))
+
+let mathExpr15 = "6P2 + 9 / 3"
+console.log(Eval_Postfix.evalPostfix_RPN(
+    Infix_toPostfix.toPostfix_RPN(mathExpr15) // 33
+))
+
+let mathExpr16 = "5! x 9P2"
+console.log(Eval_Postfix.evalPostfix_RPN(
+    Infix_toPostfix.toPostfix_RPN(mathExpr16) // 8640
+))
+
+let mathExpr17 = "7 Mod 2 x 3"
+console.log(Eval_Postfix.evalPostfix_RPN(
+    Infix_toPostfix.toPostfix_RPN(mathExpr17) // 3
+))
+
+let mathExpr18 = "sin ( cos ( 2 ) / 3 * 9 )"
+console.log(Eval_Postfix.evalPostfix_RPN(
+    Infix_toPostfix.toPostfix_RPN(mathExpr18)) //-0.9484917234
+)
+
+let mathExpr19 = "Γ(6) * 4!"
+console.log(Eval_Postfix.evalPostfix_RPN(
+    Infix_toPostfix.toPostfix_RPN(mathExpr19)) //2880
+)
+
+let mathExpr20 = "ln(2) + 4"
+console.log(Eval_Postfix.evalPostfix_RPN(
+    Infix_toPostfix.toPostfix_RPN(mathExpr20)) //4.69314718056
+)
