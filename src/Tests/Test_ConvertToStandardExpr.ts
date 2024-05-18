@@ -1,4 +1,4 @@
-import ConvertToStandard_Expression from "./convert_toStandardExpression";
+import ConvertToStandard_Expression from "../Stack_Expr_Infix_Postfix_Prefix/convert_toStandardExpression";
 
 let math_expr = "-1+2"
 let cleanedExpression = ConvertToStandard_Expression

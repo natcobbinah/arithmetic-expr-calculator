@@ -1,4 +1,4 @@
-import Infix_toPrefix from "./Infix_toPrefix";
+import Infix_toPrefix from "../Stack_Expr_Infix_Postfix_Prefix/Infix_toPrefix";
 
 //supports PEDMAS = Parentheses, Exponentiation, Division,
 //                  Multiplication, Addition, Subtraction

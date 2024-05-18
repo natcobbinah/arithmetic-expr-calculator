@@ -1,6 +1,8 @@
 import LinkedStack from "../Stack_ADT/LinkedStack";
 import ConvertToStandard_Expression from "./convert_toStandardExpression";
 import TokenizeExpression from "./Tokenize_Expression";
+import valid_parentheses from "./validate_Parentheses";
+import CustomErrorHandler from "../Error/customError";
 
 class Infix_toPostfix {
     static stack = new LinkedStack<String>();
@@ -37,9 +39,16 @@ class Infix_toPostfix {
 
         console.log(tokenizedExpression)
 
-        let postfix_expr = this.postfix_SubModule(tokenizedExpression)
-
-        console.log(postfix_expr)
+        let postfix_expr = ""
+        //validate parentheses pair in expression
+        if (valid_parentheses(tokenizedExpression)) {
+            postfix_expr = this.postfix_SubModule(tokenizedExpression)
+            console.log(postfix_expr)
+        } else {
+            throw new CustomErrorHandler("Parentheses Error", {
+                cause: new Error("Incorrect Parentheses pairs")
+            }).message
+        }
 
         return TokenizeExpression.splitByWhiteSpaces(postfix_expr)
     }

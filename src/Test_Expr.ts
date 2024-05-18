@@ -119,3 +119,15 @@ let mathExpr20 = "ln(2) + 4"
 console.log(expr.eval_Expression(
     expr.convert_to_PostfixRPN(mathExpr20)) //4.69314718056
 )
+
+//test21 - handling incorrect parentheses pairs - using postfix 
+let mathExpr21 = "ln(2 + 4"
+console.log(expr.eval_Expression(
+    expr.convert_to_PostfixRPN(mathExpr21)) //'Parentheses Error'
+)
+
+//test22 - handling incorrect parentheses pairs - using prefix 
+let mathExpr22 = "sin (cos(2 / 3 * 9)"
+console.log(expr.eval_Expression_Prefix(
+    expr.convert_to_PrefixRPN(mathExpr22)) //'Parentheses Error'
+)

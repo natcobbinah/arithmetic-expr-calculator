@@ -1,5 +1,5 @@
-import Infix_toPostfix from "./Infix_toPostfix";
-import Eval_Postfix from "./Eval_Postfix";
+import Infix_toPostfix from "../Stack_Expr_Infix_Postfix_Prefix/Infix_toPostfix";
+import Eval_Postfix from "../Stack_Expr_Infix_Postfix_Prefix/Eval_Postfix";
 
 //test1
 let mathExpr1 = "( 1 + 2 ) * 3";

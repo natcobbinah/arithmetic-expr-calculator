@@ -1,6 +1,8 @@
+import CustomErrorHandler from "../Error/customError";
 import LinkedStack from "../Stack_ADT/LinkedStack";
 import TokenizeExpression from "./Tokenize_Expression";
 import ConvertToStandard_Expression from "./convert_toStandardExpression";
+import valid_parentheses from "./validate_Parentheses";
 
 class Infix_toPrefix {
     static stack = new LinkedStack<String>();
@@ -46,39 +48,45 @@ class Infix_toPrefix {
 
         console.log(tokenizedExpression)
 
-        for (let term of tokenizedExpression) {
-            if (this.rank(term) == 0) {
-                this.stack.push(term);
-            } else if (term === "(") {
-                while (!this.stack.isEmpty() && this.rank(this.stack.peek()) > 0) {
+        if (valid_parentheses(tokenizedExpression)) {
+            for (let term of tokenizedExpression) {
+                if (this.rank(term) == 0) {
+                    this.stack.push(term);
+                } else if (term === "(") {
+                    while (!this.stack.isEmpty() && this.rank(this.stack.peek()) > 0) {
+                        prefix_expr += this.SPACE;
+                        prefix_expr += this.stack.pop();
+                    }
+                    this.stack.pop();
+                } else if (this.rank(term) > 0) {
+                    //in prefix, we pop only operators that have greater than (>) precedence, and not greater than or equal to (>=) 
+                    // as in the case with postfix
+                    while (!this.stack.isEmpty() && this.rank(this.stack.peek()) > this.rank(term)) {
+                        prefix_expr += this.SPACE;
+                        prefix_expr += this.stack.pop();
+                    }
+                    this.stack.push(term);
+                } else {
                     prefix_expr += this.SPACE;
-                    prefix_expr += this.stack.pop();
+                    prefix_expr += term;
                 }
-                this.stack.pop();
-            } else if (this.rank(term) > 0) {
-                //in prefix, we pop only operators that have greater than (>) precedence, and not greater than or equal to (>=) 
-                // as in the case with postfix
-                while (!this.stack.isEmpty() && this.rank(this.stack.peek()) > this.rank(term)) {
-                    prefix_expr += this.SPACE;
-                    prefix_expr += this.stack.pop();
-                }
-                this.stack.push(term);
-            } else {
-                prefix_expr += this.SPACE;
-                prefix_expr += term;
             }
+
+            // add any remaining operator on stack to postfix_expr
+            while (!this.stack.isEmpty()) {
+                prefix_expr += this.SPACE;
+                prefix_expr += this.stack.pop();
+            }
+
+            //reverse output string to obtain prefix expression
+            prefix_expr = prefix_expr.split("").reverse().join("");
+
+            console.log("Prefix Expression = " + prefix_expr)
+        } else {
+            throw new CustomErrorHandler("Parentheses Error", {
+                cause: new Error("Incorrect Parentheses pairs")
+            }).message
         }
-
-        // add any remaining operator on stack to postfix_expr
-        while (!this.stack.isEmpty()) {
-            prefix_expr += this.SPACE;
-            prefix_expr += this.stack.pop();
-        }
-
-        //reverse output string to obtain prefix expression
-        prefix_expr = prefix_expr.split("").reverse().join("");
-
-        console.log("Prefix Expression = " + prefix_expr)
 
         return TokenizeExpression.splitByWhiteSpaces(prefix_expr)
 

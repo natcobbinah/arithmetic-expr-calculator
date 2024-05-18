@@ -1,4 +1,4 @@
-import TokenizeExpression from "./Tokenize_Expression";
+import TokenizeExpression from "../Stack_Expr_Infix_Postfix_Prefix/Tokenize_Expression";
 
 let math_expr = "1+2-3/6*4"
 let output = TokenizeExpression.tokenize(math_expr)
