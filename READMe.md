@@ -57,7 +57,7 @@ Supported operators, extending the arithmetic-expr-calculator functionality incl
 See usage in sample examples  demonstration
 
 ## Usage in Project
-GUI demo using library for performing computations  using TypeSCript
+GUI demo using library for performing computations  using TypeScript
 > https://jolly-starburst-7073ef.netlify.app/
 
 ![arithmetic_expr_calc](https://github.com/natcobbinah/arithmetic-expr-calculator/assets/10479361/ffc950f8-5016-424a-b39a-7227ab93e73a)
